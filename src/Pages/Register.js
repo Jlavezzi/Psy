@@ -67,7 +67,7 @@ function Register() {
     }
     try {
       console.log(user, pwd);
-      const response = await axios.post(
+      const response =  axios.post(
         REGISTER_URL,
         { user, pwd },
         {
@@ -75,10 +75,10 @@ function Register() {
           withCredentials: true,
         }
       );
-      console.log(user, pwd);
-      console.log(response.data);
-      console.log(response.accessToken);
-      
+      // console.log(user, pwd);
+      // console.log(response.data);
+      console.log(response.promise);
+console.log("done");
       setSuccess(true);
 
       //clear input fields
@@ -95,15 +95,7 @@ function Register() {
   };
 
   return (
-    <>
-      {success ? (
-        <section>
-          <h1>Success!</h1>
-          <p>
-            <a href="#"> Sign In</a>
-          </p>
-        </section>
-      ) : (
+    
         <section>
           <p
             ref={errRef}
@@ -222,8 +214,8 @@ function Register() {
             </span>
           </p>
         </section>
-      )}
-    </>
+      
+    
   );
 }
 
